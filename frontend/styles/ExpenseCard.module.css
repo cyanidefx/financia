@@ -1,0 +1,25 @@
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+body.dark .card {
+  background: rgba(255, 255, 255, 0.08);
+}
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+}
+

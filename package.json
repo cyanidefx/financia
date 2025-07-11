@@ -1,0 +1,22 @@
+{
+  "name": "financia-fullstack",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"cd backend && node server.js\" \"cd frontend && next dev\""
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.3",
+    "next": "^15.3.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "chart.js": "^4.0.0",
+    "react-chartjs-2": "^5.0.0"
+  }
+}

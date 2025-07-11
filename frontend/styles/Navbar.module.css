@@ -1,0 +1,24 @@
+.nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.nav a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.nav a:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
