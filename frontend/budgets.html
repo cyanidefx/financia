@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budgets – Financia</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>Budgets</h1>
+    <p>Manage your budget categories and limits.</p>
+
+    <form id="add-budget-form">
+      <input type="text" id="category" placeholder="Category" required />
+      <input type="number" id="limit" placeholder="Limit ($)" required />
+      <button type="submit">Add Budget</button>
+    </form>
+
+    <p id="message" style="margin-top: 10px;"></p>
+
+    <button id="show-budgets-btn" style="margin-top: 20px;">Show Budgets</button>
+
+    <div id="budget-list" style="margin-top: 20px;"></div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script src="js/budgets.js"></script>
+</body>
+</html>

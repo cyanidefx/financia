@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financia Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Financia</h1>
+    <p>Select a feature to explore:</p>
+
+    <div class="button-grid">
+      <button onclick="navigateTo('dashboard.html')">Dashboard</button>
+      <button onclick="navigateTo('budgets.html')">Budgets</button>
+      <button onclick="navigateTo('analytics.html')">Analytics</button>
+      <button onclick="navigateTo('export-import.html')">Export/Import</button>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financia - Personal Finance Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glass-card">
+    <h1>Welcome to Financia</h1>
+    <p>Your intelligent personal finance tracker & budgeting tool.</p>
+
+    <div id="authButtons">
+      <button onclick="window.location.href='login.html'">Login</button>
+      <button onclick="window.location.href='register.html'">Register</button>
+    </div>
+    <div id="logoutButton" style="display:none;">
+      <button onclick="logout()">Logout</button>
+      <button onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
