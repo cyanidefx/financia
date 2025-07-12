@@ -1,103 +1,52 @@
-async function register() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+const API_URL = 'http://localhost:5000/api/auth';
 
-  if (!name || !email || !password) {
-    alert('Please fill all fields');
-    return;
-  }
+document.getElementById('loginForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const msg = document.getElementById('loginMsg');
 
   try {
-    const res = await fetch('http://localhost:5000/api/auth/register', {
+    const res = await fetch(`${API_URL}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('name', data.name);
+      window.location.href = 'dashboard.html';
+    } else {
+      msg.textContent = data.message;
+    }
+  } catch (err) {
+    msg.textContent = 'Server error';
+  }
+});
+
+document.getElementById('registerForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  console.log('Register button clicked'); // ✅ Add this line for testing
+  const name = document.getElementById('registerName').value;
+  const email = document.getElementById('registerEmail').value;
+  const password = document.getElementById('registerPassword').value;
+  const msg = document.getElementById('registerMsg');
+
+  try {
+    const res = await fetch(`${API_URL}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })
     });
-
     const data = await res.json();
-
     if (res.ok) {
-      alert('Registration successful! Please login.');
-      window.location.href = 'login.html';
+      msg.textContent = 'Registration successful. Please log in.';
     } else {
-      alert(data.message || 'Registration failed');
+      msg.textContent = data.message;
     }
   } catch (err) {
-    console.error('Register error:', err.message);
-    alert('Could not connect to server');
-  }
-}
-
-async function login() {
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-
-  if (!email || !password) {
-    alert('Please enter email and password');
-    return;
-  }
-
-  try {
-    const res = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      localStorage.setItem('token', data.token);
-      alert('Logged in successfully!');
-      window.location.href = 'dashboard.html';
-    } else {
-      alert(data.message || 'Login failed');
-    }
-  } catch (err) {
-    console.error('Login error:', err.message);
-    alert('Could not connect to server');
-  }
-}
-// js/auth.js
-
-document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault(); // stop form from submitting normally
-      await login();      // call login function
-    });
+    msg.textContent = 'Server error';
   }
 });
 
-async function login() {
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-
-  if (!email || !password) {
-    alert('Please enter both email and password');
-    return;
-  }
-
-  try {
-    const res = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      localStorage.setItem('token', data.token);
-      alert('✅ Login successful!');
-      window.location.href = 'dashboard.html';
-    } else {
-      alert(data.message || '❌ Login failed');
-    }
-  } catch (err) {
-    console.error('Login error:', err.message);
-    alert('❌ Could not connect to server');
-  }
-}

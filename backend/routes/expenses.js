@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getExpenses } = require('../controllers/expenseController');
 const auth = require('../middleware/auth');
+const { getAnalytics } = require('../controllers/expenseController');
 
-// ✅ protect route
-router.get('/', auth, getExpenses);
+router.get('/analytics', auth, getAnalytics);
 
 module.exports = router;

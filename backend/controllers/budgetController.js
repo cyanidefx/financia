@@ -2,22 +2,41 @@ const Budget = require('../models/Budget');
 
 exports.getBudgets = async (req, res) => {
   try {
-    const budgets = await Budget.find({ user: req.userId });
+    const budgets = await Budget.find({ user: req.user.id });
     res.json(budgets);
   } catch (err) {
-    console.error('Budgets error:', err.message, err.stack);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ error: 'Server error' });
   }
 };
 
 exports.addBudget = async (req, res) => {
   try {
     const { category, limit } = req.body;
-    const newBudget = new Budget({ user: req.userId, category, limit });
+    const newBudget = new Budget({ user: req.user.id, category, limit });
     await newBudget.save();
-    res.json(newBudget);
+    res.status(201).json(newBudget);
   } catch (err) {
-    console.error('Add budget error:', err.message, err.stack);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+exports.addBudget = async (req, res) => {
+  try {
+    const { category, limit } = req.body;
+
+    if (!category || !limit) {
+      return res.status(400).json({ error: 'Category and limit are required.' });
+    }
+
+    const newBudget = new Budget({
+      user: req.user.id,  // Ensure req.user exists (auth middleware)
+      category,
+      limit
+    });
+
+    await newBudget.save();
+    res.status(201).json(newBudget);
+  } catch (err) {
+    console.error('Error adding budget:', err.message);
+    res.status(500).json({ error: 'Server error' });
   }
 };
