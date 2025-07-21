@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const budgetSchema = new mongoose.Schema({
+const BudgetSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -16,12 +16,8 @@ const budgetSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true
-  },
-  createdAt: {
-    type: Date,
     default: Date.now
   }
-});
+}, { timestamps: true });
 
-module.exports = mongoose.model('Budget', budgetSchema);
+module.exports = mongoose.model('Budget', BudgetSchema);

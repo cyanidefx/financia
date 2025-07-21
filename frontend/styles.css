@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #ffffff, #000000);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -69,4 +69,135 @@ button:hover {
 .logout-btn:hover {
   background: rgba(255, 0, 0, 0.3);
   color: #ffb3b3;
+}
+.view-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.styled-select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.budget-display {
+  text-align: left;
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+.budget-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.budget-list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.budget-list li > div {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.budget-list li > div:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.budget-list ul {
+  padding-left: 16px;
+  margin-top: 4px;
+  list-style-type: none;
+}
+
+.budget-list ul li {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin: 4px 0;
+  font-weight: 400;
+}
+#nestedBudgetList {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+/* Default row-wise layout for all views */
+#nestedBudgetList li {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #888;
+}
+
+/* styles.css */
+
+.budget-list.yearly-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;            /* gap between grid cells */
+  padding: 1rem 0;
+  list-style: none;
+}
+
+/* optional: give columns a consistent look */
+.budget-list.yearly-columns > li {
+  border-right: 1px solid #ddd;
+  padding-right: 1rem;
+}
+
+/* remove trailing border */
+.budget-list.yearly-columns > li:nth-child(3n) {
+  border-right: none;
+}
+
+/* remove trailing border & margin on last column */
+.budget-list.yearly-columns > li:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+
+/* Toggle header style */
+.toggle-header {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.toggle-header:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.chart-wrapper {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #4caf50aa;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #4caf50;
 }

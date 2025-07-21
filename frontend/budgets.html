@@ -2,40 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Budgets – Financia</title>
-  <link href="styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>Budgets</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Budgets</h1>
-    <p>Manage your budget categories and limits.</p>
-    <form id="budgetForm">
-      <label>Category:</label>
-      <input type="text" id="category" required />
+    <h2>Budgets</h2>
 
-      <label>Amount (₹):</label>
-      <input type="number" id="amount" required />
+<!-- budgets.html -->
 
-      <label>Date:</label>
-      <input type="datetime-local" id="date" />
+<form id="budgetForm">
+  <label>Category:</label>
+  <input type="text" id="category" required />
 
-      <button type="submit">➕ Add Budget</button>
-    </form>
+  <label>Amount (₹):</label>
+  <input type="number" id="amount" required />
 
-    <hr>
+  <label>Date:</label>
+  <input type="datetime-local" id="date" />
 
-    <button id="showBudgetsBtn">📋 Show Budgets</button>
-    <ul id="budgetList"></ul>
+  <button type="submit">➕ Add Budget</button>
+</form>
 
-        
-    <p id="message" style="margin-top: 10px;"></p>
-    <div id="budget-list" style="margin-top: 20px;"></div>
+<hr>
 
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </div>
-
+<button id="showBudgetsBtn">📋 Show Budgets</button>
+<ul id="budgetList"></ul>
+    <div class="budget-display">
+      <ul id="nestedBudgetList" class="budget-list">
+      </ul>      
+    </div>
   <script src="js/budgets.js"></script>
 </body>
 </html>

@@ -57,4 +57,47 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+// Utility: format budgets into nested summary
+const groupBudgets = (budgets, mode) => {
+  const summary = {};
+
+  budgets.forEach(b => {
+    const date = new Date(b.date);
+    const year = date.getFullYear();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const day = date.getDate();
+    const time = date.toTimeString().slice(0, 5); // HH:mm
+
+    if (!summary[year]) summary[year] = { total: 0, months: {} };
+    if (!summary[year].months[month]) summary[year].months[month] = { total: 0, days: {} };
+    if (!summary[year].months[month].days[day]) summary[year].months[month].days[day] = { total: 0, entries: [] };
+
+    summary[year].total += b.amount;
+    summary[year].months[month].total += b.amount;
+    summary[year].months[month].days[day].total += b.amount;
+
+    // Include entries only if mode === 'daily-detail'
+    if (mode === 'daily-detail') {
+      summary[year].months[month].days[day].entries.push([time, b.amount, b.category]);
+    }
+  });
+
+  return summary;
+};
+
+// @route   GET /api/budgets/summary
+// @desc    Get grouped budget data
+// @access  Private
+router.get('/summary', auth, async (req, res) => {
+  const mode = req.query.mode || 'monthly';
+  try {
+    const budgets = await Budget.find({ user: req.user.id }).sort({ date: 1 });
+    const summary = groupBudgets(budgets, mode);
+    res.json(summary);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;

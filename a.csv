@@ -1,0 +1,8 @@
+title,amount,category,date,tags,notes,recurring
+Groceries,1200,Food,2025-07-01,"weekly","Bought fruits and veggies",false
+Cab to office,250,Travel,2025-07-02,"","Morning cab",false
+Netflix Subscription,499,Entertainment,2025-07-03,"monthly","July subscription",true
+Dinner at restaurant,850,Food,2025-07-04,"friends, weekend","",false
+Gym Membership,2000,Fitness,2025-07-05,"monthly","Monthly gym fee",true
+Bus pass recharge,500,Travel,2025-07-06,"monthly","",true
+Electricity Bill,1800,Utilities,2025-07-07,"monthly","June bill",true
